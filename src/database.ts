@@ -8,8 +8,13 @@ declare const process: {
 
 const { MONGODB_URI } = process.env;
 export async function connect() {
-    await mongoose.connect(MONGODB_URI, {
-        useNewUrlParser: true
-    });
-    console.log('DB Is connected');
+    try {
+        await mongoose.connect(MONGODB_URI, {
+            useNewUrlParser: true
+        });
+        console.log('DB Is connected');
+    }
+    catch(e) {
+        console.log(e)
+    }
 }
